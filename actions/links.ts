@@ -29,7 +29,7 @@ export async function getLinks() {
 }
 
 export async function deleteLink(id: string) {
-  console.log(id);
+  // console.log(id);
   try {
     const link = await db.link.delete({
       where: {

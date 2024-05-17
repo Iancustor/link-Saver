@@ -25,6 +25,7 @@ function CopyBtn({ id }: { id: string }) {
       } catch (error) {
         console.error("Failed to fetch link", error);
         toast.error("Failed to fetch link");
+        
       } finally {
         setLoading(false);
       }
@@ -47,21 +48,15 @@ function CopyBtn({ id }: { id: string }) {
             toast.error("Copy failed");
           }
         );
-      } else {
-        alert("Clipboard API not supported in your browser.");
       }
     } else {
       toast.error("URL not available to copy");
     }
   }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div>
-      {copied ? <p>Copying ...</p> : <button onClick={CopyLink}>Copy</button>}
+      <button onClick={CopyLink}>Copy</button>
     </div>
   );
 }

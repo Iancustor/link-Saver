@@ -32,7 +32,6 @@ function EditLink({ singleLink }: any) {
       reset();
       setLoading(false);
       toast.success("Link Updated successfully");
-      router.refresh();
       router.push("/");
     } catch (error) {
       setLoading(false);
