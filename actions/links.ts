@@ -68,7 +68,7 @@ export async function updateLink(linkId: string, data: FormValues) {
     });
 
     console.log(`Updated the Following Link: ${updatedLink}`);
-    revalidatePath("/addLink");
+    revalidatePath("/");
     return updatedLink;
   } catch (error) {
     console.log(error);
