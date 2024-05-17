@@ -75,17 +75,16 @@ export async function updateLink(linkId: string, data: FormValues) {
   }
 }
 
-export async function findUniqueLink(linkId: string) {
+export async function findUniqueLink(id: string) {
   // console.log(linkId);
   try {
     const link = await db.link.findUnique({
       where: {
-        id: linkId,
+        id: id,
       },
     });
 
-    console.log(`Link: ${link}`);
-    revalidatePath("/addLink");
+    // console.log(`Link: ${link}`);
     return link;
   } catch (error) {
     console.log(error);

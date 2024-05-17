@@ -3,17 +3,18 @@ import { deleteLink } from "@/actions/links";
 import { Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 function DeleteBtn({ id }: { id: string }) {
-  console.log(id);
+  // console.log(id);
   const [deleteLoading, setDeleteLoading] = useState<boolean>(false);
   const router = useRouter();
 
   async function handleDelete(deleteId: string) {
-    console.log(deleteId);
+    // console.log(deleteId);
     setDeleteLoading(true);
     await deleteLink(deleteId);
-    // location.reload();
+    toast.success("Link Deleted successfully");
     router.refresh();
     setDeleteLoading(false);
   }

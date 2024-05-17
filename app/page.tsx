@@ -1,14 +1,7 @@
 // "use client";
 import { getLinks } from "@/actions/links";
-import { Dropdown } from "@/components/Dropdown";
-import {
-  CirclePlus,
-  EllipsisVertical,
-  Home,
-  Plus,
-  Search,
-  Settings,
-} from "lucide-react";
+import { PopOver } from "@/components/PopOver";
+import { CirclePlus, Home, Search, Settings } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -16,11 +9,11 @@ async function page() {
   const links = await getLinks();
   // console.log(links);
   return (
-    <main className="flex min-h-96 flex-col gap-5 py-4 relative">
+    <main className="flex lg:px-80 flex-col gap-5 py-4 relative">
       <header>
-        <h2 className="text-center font-semibold">Link Keeper</h2>
+        <h2 className="text-center font-semibold uppercase">Link Keeper</h2>
         <nav className="items-center justify-between flex  ">
-          <button className="bg-blue-300 py-2 px-8 rounded-md">
+          <button className="bg-blue-300 py-2 px-4 rounded-md">
             <Home />
           </button>
           <div></div>
@@ -36,7 +29,7 @@ async function page() {
               <h2 className="font-semibold">{link.name}</h2>
               <p>{link.url}</p>
             </div>
-            <Dropdown id={link.id} key={i} />
+            <PopOver id={link.id} key={i} />
           </div>
         ))}
       </section>
@@ -47,12 +40,12 @@ async function page() {
             <Settings />
           </button>
 
-          <button>
+          {/* <button>
             <Search />
-          </button>
+          </button> */}
         </div>
-        <div className="bg-blue-300 py-2 px-4 rounded-md">
-          <Link href="/addLink">
+        <div className="bg-blue-300 py-2 px-2 rounded-full">
+          <Link href="/addLink" className=" rounded-full">
             <CirclePlus />
           </Link>
         </div>

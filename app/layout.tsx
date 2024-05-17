@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { CirclePlus, Search, Settings } from "lucide-react";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="min-h-[80vh] px-6 ">{children}</div>
+        <Toaster position="top-center" />
+        <div className="min-h-screen items-center justify-center px-6 ">
+          {children}
+        </div>
       </body>
     </html>
   );
