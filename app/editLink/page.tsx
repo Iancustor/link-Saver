@@ -8,9 +8,6 @@ import {
 import { FormValues } from "@/types/types";
 import { link } from "@prisma/client";
 import { Check, Delete, Edit, Loader } from "lucide-react";
-import { revalidatePath } from "next/cache";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
@@ -21,38 +18,40 @@ function Page() {
   const [initialData, setInitialData] = useState<any>({});
 
   const [id, setId] = useState<string>("");
-  const router = useRouter();
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    defaultValues: initialData,
+  });
 
-  //   useEffect(() => {
-  //     const fetchLinks = async () => {
-  //       try {
-  //         const data = await getLinks();
-  //         setLinks(data);
-  //       } catch (error) {
-  //         console.error("Failed to fetch links:", error);
-  //       }
-  //     };
+  useEffect(() => {
+    const fetchLinks = async () => {
+      try {
+        const data = await getLinks();
+        setLinks(data);
+      } catch (error) {
+        console.error("Failed to fetch links:", error);
+      }
+    };
 
-  //     fetchLinks();
-  //   }, []);
+    fetchLinks();
+  }, []);
 
   //   console.log(initialData);
 
-  //   useEffect(() => {
-  //     if (id) {
-  //       const foundLink = links.find((link: any) => link.id === id);
-  //       setInitialData(foundLink);
-  //       if (foundLink) {
-  //         reset(foundLink);
-  //       }
-  //     }
-  //   }, [id, links, reset]);
+  useEffect(() => {
+    if (id) {
+      const foundLink = links.find((link: any) => link.id === id);
+      setInitialData(foundLink);
+      if (foundLink) {
+        reset(foundLink);
+      }
+    }
+  }, [id, links, reset]);
 
   async function handleDelete(linkId: string) {
     setDeleteLoading(true);
@@ -65,10 +64,17 @@ function Page() {
     setLoading(true);
     // console.log(data);
     try {
-      await createNewLink(data);
-      reset();
-      setLoading(false);
-      router.push("/");
+      if (initialData) {
+        await updateLink(id, data);
+        reset();
+        setLoading(false);
+        location.reload();
+      } else {
+        await createNewLink(data);
+        reset();
+        setLoading(false);
+        location.reload();
+      }
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -76,7 +82,7 @@ function Page() {
   }
 
   return (
-    <div className="flex flex-col items-center py-8 gap-5">
+    <div className="flex items-center py-8 gap-5">
       <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="font-semibold">Add Link</h2>
         <div className="flex flex-col gap-3">
@@ -113,8 +119,7 @@ function Page() {
         </div>
       </form>
       <div className="flex flex-col space-y-2">
-        <Link href="/">Back</Link>
-        {/* {links?.map((link: link) => (
+        {links?.map((link: link) => (
           <>
             <div className="flex justify-between items-center">
               <h1 className="font-bold">{link.name}</h1>
@@ -131,7 +136,7 @@ function Page() {
             </div>
             <p>{link.url}</p>
           </>
-        ))} */}
+        ))}
       </div>
     </div>
   );

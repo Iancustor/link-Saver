@@ -1,6 +1,10 @@
-// import Link from "next/link";
-// import React from "react";
+import Link from "next/link";
+import React from "react";
 
-// export default function EditBtn() {
-//   return <div></div>;
-// }
+export default function EditBtn() {
+  return (
+    <div>
+      <Link href="/editLink">Edit</Link>
+    </div>
+  );
+}

@@ -38,6 +38,7 @@ import {
 import DeleteBtn from "./DeleteBtn";
 import { getLinks } from "@/actions/links";
 import Link from "next/link";
+import EditBtn from "./EditBtn";
 
 export async function Dropdown({ id }: { id: string }) {
   const links = await getLinks();
@@ -45,7 +46,6 @@ export async function Dropdown({ id }: { id: string }) {
   // console.log(id);
   return (
     <section>
-      {/* {links?.map((link, i) => ( */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -60,7 +60,7 @@ export async function Dropdown({ id }: { id: string }) {
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <Edit2 className="mr-2 h-4 w-4" />
-            <Link href="/editLink">Edit</Link>
+            <EditBtn linkId ={id} />
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Trash2 className="mr-2 h-4 w-4" />
