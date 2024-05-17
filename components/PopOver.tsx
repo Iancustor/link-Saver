@@ -53,7 +53,7 @@ export function PopOver({ id }: { id: string }) {
         <SheetFooter className="font-semibold mt-2">
           {" "}
           <Link
-            className="text-sm text-muted-foreground hover:text-blue-600 text-black font-semibold"
+            className="text-sm text-muted-foreground flex text-center hover:text-blue-600 text-black font-semibold"
             href={"https://custordev.vercel.app/"}
           >
             Developed with 💖 by CustorDev{" "}

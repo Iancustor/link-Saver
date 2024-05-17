@@ -1,34 +1,67 @@
 "use client";
-import { findUniqueLink } from "@/actions/links";
+import { findUniqueLink } from "@/actions/links"; // Ensure this is correctly imported
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 function CopyBtn({ id }: { id: string }) {
   const [copied, setCopied] = useState(false);
+  const [singleLink, setSingleLink] = useState<string | null>(null); // Simplified to string or null
+  const [loading, setLoading] = useState(true); // Add loading state
   const router = useRouter();
-  // const singleLink = findUniqueLink(id);
-  // console.log(singleLink);
-  function CopyLink() {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(id).then(
-        () => {
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2000);
-          toast.success("Link Copied successfully");
-          router.refresh();
-        },
-        (error) => {
-          console.error("Copy failed", error);
+
+  useEffect(() => {
+    async function fetchLink() {
+      try {
+        // console.log(`Fetching link for id: ${id}`);
+        const link = await findUniqueLink(id);
+        if (link && link.url) {
+          // console.log("Fetched link:", link);
+          setSingleLink(link.url);
+        } else {
+          console.error("Link not found or URL is missing");
+          toast.error("Link not found or URL is missing");
         }
-      );
+      } catch (error) {
+        console.error("Failed to fetch link", error);
+        toast.error("Failed to fetch link");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchLink();
+  }, [id]);
+
+  function CopyLink() {
+    if (singleLink) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(singleLink).then(
+          () => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+            toast.success("Link copied successfully");
+            router.refresh();
+          },
+          (error) => {
+            console.error("Copy failed", error);
+            toast.error("Copy failed");
+          }
+        );
+      } else {
+        alert("Clipboard API not supported in your browser.");
+      }
     } else {
-      alert("Clipboard API not supported in your browser.");
+      toast.error("URL not available to copy");
     }
   }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
-      <button onClick={CopyLink}>Copy</button>
+      {copied ? <p>Copying ...</p> : <button onClick={CopyLink}>Copy</button>}
     </div>
   );
 }
