@@ -60,7 +60,7 @@ export async function Dropdown({ id }: { id: string }) {
           <DropdownMenuSeparator />
           <DropdownMenuItem>
             <Edit2 className="mr-2 h-4 w-4" />
-            <EditBtn linkId ={id} />
+            <EditBtn />
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Trash2 className="mr-2 h-4 w-4" />
