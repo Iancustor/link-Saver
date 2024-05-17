@@ -24,9 +24,9 @@ async function page() {
             <Home />
           </button>
           <div></div>
-          <button className="bg-blue-300 py-2 px-4 rounded-md">
+          {/* <button className="bg-blue-300 py-2 px-4 rounded-md">
             <Plus />
-          </button>
+          </button> */}
         </nav>
       </header>
       <section className="flex flex-col gap-4 relative">
