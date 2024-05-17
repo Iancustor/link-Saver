@@ -9,7 +9,7 @@ export async function createNewLink(data: any) {
   // console.log(data);
   try {
     const newLink = await db.link.create({ data });
-    revalidatePath("/addLink");
+    revalidatePath("/");
     // console.log(`New created link: ${newLink}`);
     return newLink;
   } catch (error) {
