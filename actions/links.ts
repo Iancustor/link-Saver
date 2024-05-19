@@ -1,3 +1,5 @@
+"use server";
+
 import { db } from "@/lib/db";
 import { FormValues } from "@/types/types";
 import { revalidatePath } from "next/cache";
@@ -33,8 +35,8 @@ export async function deleteLink(id: string) {
         id,
       },
     });
-    revalidatePath("/");
     // console.log(`deleted the Following Link: ${link}`);
+    // revalidatePath("/addLink");
     return link;
   } catch (error) {
     console.log(error);
@@ -63,8 +65,9 @@ export async function updateLink(linkId: string, data: FormValues) {
       },
       data: updateData,
     });
-    revalidatePath("/");
+
     console.log(`Updated the Following Link: ${updatedLink}`);
+    revalidatePath("/");
     return updatedLink;
   } catch (error) {
     console.log(error);
@@ -81,7 +84,6 @@ export async function findUniqueLink(id: string) {
     });
 
     // console.log(`Link: ${link}`);
-    revalidatePath("/");
     return link;
   } catch (error) {
     console.log(error);
