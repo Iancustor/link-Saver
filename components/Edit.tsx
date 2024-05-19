@@ -45,17 +45,13 @@ function EditLink({ singleLink }: any) {
       <form
         onSubmit={handleSubmit(onSubmit)}
         action=""
-<<<<<<< HEAD
-        className="bg-neutral-300 py-12 lg:px-8 flex flex-col gap-6 lg:w-[65vw] w-screen px-6"
-=======
-        className="bg-neutral-300 py-12 lg:px-8 flex flex-col gap-6 lg:w-[65vw] w-screen px-6 rounded-md"
->>>>>>> b7a2a31ce2a9d99f6967abaca47be3554e9f0451
+        className="bg-neutral-300 text-black py-12 lg:px-8 flex flex-col gap-6 lg:w-[65vw] w-screen px-6"
       >
         <div className="flex flex-col gap-1">
-          <h2 className="text-xl font-semibold">Enter New Link Details</h2>
+          <h2 className="text-xl font-semibold">Edit  Link Details</h2>
           <p>Update Your Link Here </p>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col  ">
           <label htmlFor="" className="font-semibold">
             Name
           </label>
@@ -64,7 +60,7 @@ function EditLink({ singleLink }: any) {
             id="name"
             type="text"
             placeholder=" Enter Link Name  "
-            className="py-2 px-2 rounded-sm"
+            className="py-2 px-2 rounded-sm  dark:text-slate-300"
           />
           {errors.name && (
             <p className="text-red-600 text-sm">Please insert in Name</p>
@@ -79,7 +75,7 @@ function EditLink({ singleLink }: any) {
             id="url"
             type="url"
             placeholder=" Enter  Url  "
-            className="py-2 px-2 rounded-sm"
+            className="py-2 px-2 rounded-sm dark:text-slate-300"
           />
           {errors.url && <p className="text-red-400">Please enter Url</p>}
         </div>

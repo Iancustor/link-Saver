@@ -36,7 +36,7 @@ export async function deleteLink(id: string) {
       },
     });
     // console.log(`deleted the Following Link: ${link}`);
-    // revalidatePath("/addLink");
+    revalidatePath("/");
     return link;
   } catch (error) {
     console.log(error);

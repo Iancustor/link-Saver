@@ -1,18 +1,20 @@
 "use client";
 import { findUniqueLink } from "@/actions/links";
 import { useRouter } from "next/navigation";
+import { title } from "process";
 import React, { useEffect, useState } from "react";
 
 interface ShareButtonProps {
   url: string;
-  title?: string;
+  name?: string;
   text?: string;
+  title: string;
 }
 
 const ShareBtn = ({
   id,
   url,
-  title,
+  name,
   text,
 }: { id: string } & ShareButtonProps) => {
   const router = useRouter();

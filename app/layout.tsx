@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { CirclePlus, Search, Settings } from "lucide-react";
 import { Toaster } from "react-hot-toast";
-
+import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,16 +17,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Toaster position="top-center" />
-<<<<<<< HEAD
-        <div className="min-h-screen items-center justify-center px-6 bg-dark-blue-gradient bg-gradient-to-br from-blue-900 to-white  ">
-=======
-        <div className="  px-6 bg-dark-blue-gradient bg-gradient-to-br from-blue-900 to-white min-h-screen flex items-center justify-center">
->>>>>>> b7a2a31ce2a9d99f6967abaca47be3554e9f0451
-          {children}
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Toaster position="top-center" />
+          <div className="min-h-screen items-center justify-center px-6   ">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -38,7 +38,7 @@ function Page() {
       <form
         onSubmit={handleSubmit(onSubmit)}
         action=""
-        className="bg-neutral-300 rounded-md py-12 px-8 flex flex-col gap-6 lg:w-[65vw] w-screen"
+        className="bg-neutral-300 text-black rounded-md py-12 px-8 flex flex-col gap-6 lg:w-[65vw] w-screen"
       >
         <div className="flex flex-col gap-1">
           <h2 className="text-xl font-semibold">Add New Link Details</h2>
@@ -53,7 +53,7 @@ function Page() {
             id="name"
             type="name"
             placeholder=" Enter your income  "
-            className="py-2 px-2 rounded-sm"
+            className="py-2 px-2 rounded-sm dark:text-slate-300"
           />
           {errors.name && (
             <p className="text-red-600 text-sm">Please insert in Name</p>
@@ -68,7 +68,7 @@ function Page() {
             id="url"
             type="url"
             placeholder=" Enter your income  "
-            className="py-2 px-2 rounded-sm"
+            className="py-2 px-2 rounded-sm dark:text-slate-300"
           />
           {errors.url && <p className="text-red-400">Please enter Url</p>}
         </div>

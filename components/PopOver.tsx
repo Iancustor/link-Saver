@@ -22,7 +22,7 @@ export function PopOver({ id }: { id: string }) {
       <SheetTrigger asChild>
         <Button
           variant="outline"
-          className="absolute bg-blue-100 py-2 px-2  rounded-full top-5 right-8 "
+          className="absolute  py-2 px-2  rounded-full top-5 right-8 "
         >
           <EllipsisVertical />
         </Button>
