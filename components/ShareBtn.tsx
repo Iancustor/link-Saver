@@ -1,23 +1,19 @@
 "use client";
+
 import { findUniqueLink } from "@/actions/links";
-import { useRouter } from "next/navigation";
-import { title } from "process";
 import React, { useEffect, useState } from "react";
 
+// Interface for the props expected by the ShareBtn component
 interface ShareButtonProps {
-  url: string;
+  url?: string;
   name?: string;
-  text?: string;
-  title: string;
 }
 
-const ShareBtn = ({
-  id,
-  url,
-  name,
-  text,
-}: { id: string } & ShareButtonProps) => {
-  const router = useRouter();
+interface ShareBtnProps extends ShareButtonProps {
+  id: string;
+}
+
+const ShareBtn: React.FC<ShareBtnProps> = ({ id, url }) => {
   const [loading, setLoading] = useState(true);
   const [singleLink, setSingleLink] = useState<string | null>(null);
 
@@ -36,16 +32,15 @@ const ShareBtn = ({
         setLoading(false);
       }
     }
+
     fetchLink();
   }, [id]);
 
-  function shareLink() {
+  const shareLink = () => {
     if (navigator.share) {
       navigator
         .share({
-          title: title || document.title,
-          text: text || "",
-          url: singleLink || url,
+          url: singleLink || url || window.location.href, // Fallback to current URL if neither singleLink nor url is provided
         })
         .then(() => {
           console.log("Shared successfully");
@@ -56,7 +51,7 @@ const ShareBtn = ({
     } else {
       alert("Web Share API is not supported in your browser.");
     }
-  }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
