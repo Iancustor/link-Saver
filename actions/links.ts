@@ -2,14 +2,11 @@
 
 import { db } from "@/lib/db";
 import { FormValues } from "@/types/types";
-import { link } from "@prisma/client";
-import { revalidatePath } from "next/cache";
 
 export async function createNewLink(data: any) {
   // console.log(data);
   try {
     const newLink = await db.link.create({ data });
-    revalidatePath("/");
     // console.log(`New created link: ${newLink}`);
     return newLink;
   } catch (error) {
@@ -37,7 +34,6 @@ export async function deleteLink(id: string) {
       },
     });
     // console.log(`deleted the Following Link: ${link}`);
-    // revalidatePath("/addLink");
     return link;
   } catch (error) {
     console.log(error);
@@ -68,7 +64,6 @@ export async function updateLink(linkId: string, data: FormValues) {
     });
 
     console.log(`Updated the Following Link: ${updatedLink}`);
-    revalidatePath("/");
     return updatedLink;
   } catch (error) {
     console.log(error);
