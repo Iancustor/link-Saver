@@ -20,11 +20,11 @@ function CopyBtn({ id }: { id: string }) {
           setSingleLink(link.url);
         } else {
           console.error("Link not found or URL is missing");
-          toast.error("Link not found or URL is missing");
+          // toast.error("Link not found or URL is missing");
         }
       } catch (error) {
         console.error("Failed to fetch link", error);
-        toast.error("Failed to fetch link");
+        // toast.error("Failed to fetch link");
         
       } finally {
         setLoading(false);
@@ -50,7 +50,7 @@ function CopyBtn({ id }: { id: string }) {
         );
       }
     } else {
-      toast.error("URL not available to copy");
+      // toast.error("URL not available to copy");
     }
   }
 

@@ -13,10 +13,16 @@ async function page() {
       <header>
         <h2 className="text-center font-semibold uppercase">Link Keeper</h2>
         <nav className="items-center justify-between flex  ">
-          <button className="bg-blue-300 py-2 px-4 rounded-md">
+          <button className="bg-neutral-300 py-2 px-4 rounded-md">
             <Home />
           </button>
-          <div></div>
+          <div>
+            <div className="bg-neutral-300 py-2 px-2 rounded-full">
+              <Link href="/addLink" className=" rounded-full">
+                <CirclePlus />
+              </Link>
+            </div>
+          </div>
           {/* <button className="bg-blue-300 py-2 px-4 rounded-md">
             <Plus />
           </button> */}
@@ -25,7 +31,7 @@ async function page() {
       <section className="flex flex-col gap-4 relative">
         {links?.map((link, i) => (
           <div key={i} className="relative">
-            <div className="bg-blue-200 py-4 px-8 rounded-lg">
+            <div className="bg-neutral-300 py-4 px-8 rounded-lg">
               <h2 className="font-semibold">{link.name}</h2>
               <p>{link.url}</p>
             </div>
@@ -34,21 +40,16 @@ async function page() {
         ))}
       </section>
       <footer className="items-center justify-between flex  ">
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <button>
             {" "}
             <Settings />
           </button>
 
-          {/* <button>
+          <button>
             <Search />
-          </button> */}
-        </div>
-        <div className="bg-blue-300 py-2 px-2 rounded-full">
-          <Link href="/addLink" className=" rounded-full">
-            <CirclePlus />
-          </Link>
-        </div>
+          </button>
+        </div> */}
       </footer>
     </main>
   );

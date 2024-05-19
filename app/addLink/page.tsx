@@ -38,7 +38,7 @@ function Page() {
       <form
         onSubmit={handleSubmit(onSubmit)}
         action=""
-        className="bg-neutral-300 rounded-md py-12 px-8 flex flex-col gap-6 lg:w-[60%] w-screen"
+        className="bg-neutral-300 rounded-md py-12 px-8 flex flex-col gap-6 lg:w-[65vw] w-screen"
       >
         <div className="flex flex-col gap-1">
           <h2 className="text-xl font-semibold">Add New Link Details</h2>

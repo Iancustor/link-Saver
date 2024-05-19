@@ -14,6 +14,7 @@ import { Cloud, Edit2, EllipsisVertical, LogOut, Trash2 } from "lucide-react";
 import Link from "next/link";
 import DeleteBtn from "./DeleteBtn";
 import CopyBtn from "./CopyBtn";
+import ShareBtn from "./ShareBtn";
 
 export function PopOver({ id }: { id: string }) {
   return (
@@ -42,11 +43,11 @@ export function PopOver({ id }: { id: string }) {
             </div>
             <div className="flex gap-3 items-center font-bold">
               <Cloud className="mr-2 h-4 w-4 font-bold" />
-              <CopyBtn id={id}/>
+              <CopyBtn id={id} />
             </div>
-            <div aria-disabled className="flex gap-3 items-center  ">
+            <div aria-disabled className="flex gap-3 items-center  font-bold">
               <LogOut className="mr-2 h-4 w-4 " />
-              <p>Share</p>
+              <ShareBtn id={id} />
             </div>
           </div>
         </SheetHeader>

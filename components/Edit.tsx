@@ -45,7 +45,7 @@ function EditLink({ singleLink }: any) {
       <form
         onSubmit={handleSubmit(onSubmit)}
         action=""
-        className="bg-neutral-300 py-12 lg:px-8 flex flex-col gap-6 lg:w-[60%] w-screen px-6"
+        className="bg-neutral-300 py-12 lg:px-8 flex flex-col gap-6 lg:w-[65vw] w-screen px-6"
       >
         <div className="flex flex-col gap-1">
           <h2 className="text-xl font-semibold">Enter New Link Details</h2>
