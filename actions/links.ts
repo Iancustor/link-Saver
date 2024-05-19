@@ -2,7 +2,6 @@
 
 import { db } from "@/lib/db";
 import { FormValues } from "@/types/types";
-import { link } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
 export async function createNewLink(data: any) {

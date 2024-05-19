@@ -20,7 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Toaster position="top-center" />
+<<<<<<< HEAD
         <div className="min-h-screen items-center justify-center px-6 bg-dark-blue-gradient bg-gradient-to-br from-blue-900 to-white  ">
+=======
+        <div className="  px-6 bg-dark-blue-gradient bg-gradient-to-br from-blue-900 to-white min-h-screen flex items-center justify-center">
+>>>>>>> b7a2a31ce2a9d99f6967abaca47be3554e9f0451
           {children}
         </div>
       </body>

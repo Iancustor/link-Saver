@@ -19,7 +19,11 @@ function CopyBtn({ id }: { id: string }) {
           // console.log("Fetched link:", link);
           setSingleLink(link.url);
         } else {
+<<<<<<< HEAD
           console.error("Link not found or URL is missing");
+=======
+          // console.error("Link not found or URL is missing");
+>>>>>>> b7a2a31ce2a9d99f6967abaca47be3554e9f0451
           // toast.error("Link not found or URL is missing");
         }
       } catch (error) {
@@ -49,9 +53,13 @@ function CopyBtn({ id }: { id: string }) {
           }
         );
       }
+<<<<<<< HEAD
     } else {
       // toast.error("URL not available to copy");
     }
+=======
+    } 
+>>>>>>> b7a2a31ce2a9d99f6967abaca47be3554e9f0451
   }
 
   return (
