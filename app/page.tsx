@@ -13,10 +13,22 @@ async function page() {
       <header>
         <h2 className="text-center font-semibold uppercase">Link Keeper</h2>
         <nav className="items-center justify-between flex  ">
-          <button className="bg-neutral-300 py-2 px-4 rounded-md">
+          <button
+            title="Dont Click Me"
+            disabled
+            className="bg-neutral-300 py-2 px-4 rounded-md"
+          >
             <Home />
           </button>
-          <div></div>
+
+          <div>
+            {" "}
+            <div className="bg-neutral-300 py-2 px-2 rounded-full">
+              <Link href="/addLink" className=" rounded-full">
+                <CirclePlus />
+              </Link>
+            </div>
+          </div>
           {/* <button className="bg-neutral-300 py-2 px-4 rounded-md">
             <Plus />
           </button> */}
@@ -29,26 +41,21 @@ async function page() {
               <h2 className="font-semibold">{link.name}</h2>
               <p>{link.url}</p>
             </div>
-            <PopOver id={link.id}  />
+            <PopOver id={link.id} />
           </div>
         ))}
       </section>
       <footer className="items-center justify-between flex  ">
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <button>
             {" "}
             <Settings />
           </button>
 
-          {/* <button>
+          <button>
             <Search />
-          </button> */}
-        </div>
-        <div className="bg-neutral-300 py-2 px-2 rounded-full">
-          <Link href="/addLink" className=" rounded-full">
-            <CirclePlus />
-          </Link>
-        </div>
+          </button>
+        </div> */}
       </footer>
     </main>
   );
