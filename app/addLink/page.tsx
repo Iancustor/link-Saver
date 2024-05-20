@@ -52,7 +52,7 @@ function Page() {
             {...register("name", { required: true })}
             id="name"
             type="name"
-            placeholder=" Enter your income  "
+            placeholder=" Enter your Link Name  "
             className="py-2 px-2 rounded-sm dark:text-slate-300"
           />
           {errors.name && (
@@ -67,7 +67,7 @@ function Page() {
             {...register("url", { required: true })}
             id="url"
             type="url"
-            placeholder=" Enter your income  "
+            placeholder=" Enter your Url  "
             className="py-2 px-2 rounded-sm dark:text-slate-300"
           />
           {errors.url && <p className="text-red-400">Please enter Url</p>}
