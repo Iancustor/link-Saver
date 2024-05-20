@@ -1,6 +1,7 @@
 "use client";
 import { createNewLink } from "@/actions/links";
 import { FormValues } from "@/types/types";
+import { useAuth } from "@clerk/nextjs";
 import { Check, Loader, Undo2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,6 +10,9 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 function Page() {
+  const { userId } = useAuth();
+  // console.log(userId)
+
   const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
   const {
@@ -21,8 +25,16 @@ function Page() {
   async function onSubmit(data: FormValues) {
     setLoading(true);
     // console.log(data);
+    if (!userId) {
+      toast.error("User is not authenticated.");
+      setLoading(false);
+      return;
+    }
+    const userData = { ...data, userId };
+    // console.log(userData);
     try {
-      await createNewLink(data);
+      await createNewLink(userData);
+
       reset();
       setLoading(false);
       toast.success("Link Created successfully");

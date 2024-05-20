@@ -2,31 +2,40 @@
 
 import { db } from "@/lib/db";
 import { FormValues } from "@/types/types";
+import { auth, getAuth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export async function createNewLink(data: any) {
+export async function createNewLink(data: FormValues & { userId: string }) {
   // console.log(data);
   try {
     const newLink = await db.link.create({ data });
     revalidatePath("/");
-    // console.log(`New created link: ${newLink}`);
+    // console.log(newLink);
     return newLink;
   } catch (error) {
     console.log(error);
+    throw new Error("Failed to create link");
   }
 }
 
 export async function getLinks() {
-  // console.log(data);
+    const { userId } : { userId: string | null } = auth();
+    // console.log(userId)
+  if (!userId) {
+    throw new Error("User is not authenticated");
+  }
+
   try {
-    const links = await db.link.findMany();
-    // console.log(`All links: ${links}`);
+    const links = await db.link.findMany({
+      where: { userId },
+    });
     return links;
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    throw new Error("Failed to fetch links");
   }
 }
-
 export async function deleteLink(id: string) {
   // console.log(id);
   try {

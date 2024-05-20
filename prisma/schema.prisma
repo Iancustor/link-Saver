@@ -17,5 +17,6 @@ model link {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   url  String
+  userId String
 }
 
