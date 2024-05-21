@@ -36,22 +36,31 @@ function LinkForm({ categoriesData, initialData }: LinkFormProps) {
   async function onSubmit(data: LinkValues) {
     setLoading(true);
     data.categoryId = categoryId;
-
+  
     if (!userId) {
       toast.error("User is not authenticated.");
       setLoading(false);
       return;
     }
+  
     const userData = { ...data, userId };
     try {
-      await updateLink(initialData.id, userData); // Update the link
+      if (initialData && initialData.id) {
+        // Update the link
+        await updateLink(initialData.id, userData);
+        toast.success("Link updated successfully");
+      } else {
+        // Create a new link
+        await createNewLink(userData);
+        toast.success("Link created successfully");
+      }
       reset();
       setLoading(false);
-      toast.success("Link Updated successfully");
       router.push("/");
     } catch (error) {
       setLoading(false);
       console.error(error);
+      toast.error("An error occurred");
     }
   }
 
