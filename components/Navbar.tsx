@@ -5,9 +5,9 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "./Toggle";
 function Navbar() {
   return (
-    <div className="flex flex-wrap lg:px-56 justify-between items-center mx-auto max-w-screen-xl py-4 px-4">
+    <div className="flex flex-wrap  justify-between items-center mx-auto max-w-screen-xl py-4 lg:px-52 px-4">
       <Link
-        href="#"
+        href="/"
         className="flex items-center space-x-3 rtl:space-x-reverse"
       >
         <Image

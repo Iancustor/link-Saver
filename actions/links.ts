@@ -1,12 +1,11 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { FormValues } from "@/types/types";
-import { auth, getAuth } from "@clerk/nextjs/server";
+import { link } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { auth } from "@clerk/nextjs/server";
 
-export async function createNewLink(data: FormValues & { userId: string }) {
+export async function createNewLink(data: link) {
   // console.log(data);
   try {
     const newLink = await db.link.create({ data });
@@ -20,8 +19,8 @@ export async function createNewLink(data: FormValues & { userId: string }) {
 }
 
 export async function getLinks() {
-    const { userId } : { userId: string | null } = auth();
-    // console.log(userId)
+  const { userId }: { userId: string | null } = auth();
+  // console.log(userId)
   if (!userId) {
     throw new Error("User is not authenticated");
   }
@@ -33,9 +32,9 @@ export async function getLinks() {
     return links;
   } catch (error) {
     console.error(error);
-    throw new Error("Failed to fetch links");
   }
 }
+
 export async function deleteLink(id: string) {
   // console.log(id);
   try {
@@ -52,7 +51,7 @@ export async function deleteLink(id: string) {
   }
 }
 
-export async function updateLink(linkId: string, data: FormValues) {
+export async function updateLink(linkId: string, data: link) {
   try {
     const existingLink = await db.link.findUnique({
       where: {

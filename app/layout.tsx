@@ -30,7 +30,7 @@ export default function RootLayout({
           >
             <Navbar />
             <Toaster position="top-center" />
-            <div className="min-h-screen items-center justify-center px-6   ">
+            <div className="min-h-screen items-center justify-center lg:px-64 px-4 ">
               {children}
             </div>
           </ThemeProvider>

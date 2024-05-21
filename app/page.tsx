@@ -1,24 +1,43 @@
 // "use client";
+import { fetchCategories } from "@/actions/categories";
 import { getLinks } from "@/actions/links";
 import { PopOver } from "@/components/PopOver";
-// import { ModeToggle } from "@/components/Toggle";
-import { CirclePlus, Home, Search, Settings } from "lucide-react";
+import { CirclePlus } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { AddCategory } from "@/components/AddCategory";
 
 async function page() {
   const links = await getLinks();
   // console.log(links);
+  const categories = await fetchCategories();
   return (
-    <main className="flex lg:px-64 flex-col gap-5 py-4 relative">
+    <main className="flex  flex-col gap-5 py-4 relative">
       <header>
-        <nav className=" ">
-          <div>
-            <div className=" py-2 px-2 rounded-full">
-              <Link href="/addLink" className=" rounded-full">
+        <nav className="flex flex-col gap-4 ">
+          <div className="flex justify-between items-center">
+            {" "}
+            <div className="">
+              <Link
+                href="/addLink"
+                className=" flex gap-3 font-bold dark:hover:bg-neutral-900 dark:border-neutral-800 border-neutral-100 border hover:bg-slate-100 py-1.5 px-5  rounded-md"
+              >
                 <CirclePlus />
+                Link
               </Link>
             </div>
+            <AddCategory />
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:grid-cols-5">
+            {categories?.map((item, i) => (
+              <Link
+                href={`category/${item.slug}`}
+                key={i}
+                className="py-2 px-3 bg-amber-500 text-sm font-semibold text-white rounded-md"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
         </nav>
       </header>
