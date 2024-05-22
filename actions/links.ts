@@ -28,6 +28,7 @@ export async function getLinks() {
   try {
     const links = await db.link.findMany({
       where: { userId },
+      include: { linkCategory: true },
     });
     return links;
   } catch (error) {

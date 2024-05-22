@@ -10,7 +10,15 @@ import { AddCategory } from "@/components/AddCategory";
 async function page() {
   const links = await getLinks();
   // console.log(links);
+
   const categories = await fetchCategories();
+
+  const linkCategories = Array.from(
+    new Set(links?.map((link) => link.linkCategory))
+  );
+
+  // console.log(linkCategories);
+
   return (
     <main className="flex  flex-col gap-5 py-4 relative">
       <header>
@@ -29,7 +37,7 @@ async function page() {
             <AddCategory />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:grid-cols-5">
-            {categories?.map((item, i) => (
+            {linkCategories?.map((item, i) => (
               <Link
                 href={`category/${item.slug}`}
                 key={i}
