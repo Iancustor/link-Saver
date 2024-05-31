@@ -3,7 +3,6 @@
 import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { linkCategory } from "@prisma/client";
-import { auth } from "@clerk/nextjs/server";
 
 export async function createCategory(data: linkCategory) {
   // console.log(data);

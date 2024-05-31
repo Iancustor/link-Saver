@@ -51,11 +51,15 @@ async function page() {
       </header>
       <section className="flex flex-col gap-4 relative">
         {links?.map((link, i) => (
-          <div key={i} className="relative">
-            <div className=" bg-dark-blue-gradient  bg-neutral-300 dark text-black py-4 px-8 rounded-lg">
+          <div className="flex relative">
+            <Link
+              href={link.url}
+              key={i}
+              className=" w-full bg-dark-blue-gradient  bg-neutral-300 dark text-black py-4 px-8 rounded-lg"
+            >
               <h2 className="font-semibold">{link.name}</h2>
-              <p>{link.url}</p>
-            </div>
+              <p className="break-all">{link.url}</p>
+            </Link>
             <PopOver id={link.id} />
           </div>
         ))}

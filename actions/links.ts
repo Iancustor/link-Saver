@@ -29,7 +29,9 @@ export async function getLinks() {
     const links = await db.link.findMany({
       where: { userId },
       include: { linkCategory: true },
+      orderBy: { createdAt: "desc" },
     });
+
     return links;
   } catch (error) {
     console.error(error);
