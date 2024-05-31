@@ -1,6 +1,5 @@
 "use client";
 import { updateLink } from "@/actions/links";
-import { LinkValues } from "@/types/types";
 import { Loader, Undo2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -35,7 +34,7 @@ function EditLink(
     defaultValues: singleLink,
   });
 
-  async function onSubmit(data: LinkValues) {
+  async function onSubmit(data: any) {
     data.categoryId = categoryId;
     setLoading(true);
     try {
