@@ -21,7 +21,6 @@ model link {
   categoryId   String       @db.ObjectId
   linkCategory linkCategory @relation(fields: [categoryId], references: [id])
   createdAt DateTime?  @default(now())
-  updatedAt DateTime? @updatedAt
 }
 
 model linkCategory {
