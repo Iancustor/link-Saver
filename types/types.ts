@@ -5,6 +5,7 @@ export type LinkValues = {
   categoryId: string;
   userId: string;
   createdAt: Date;
+  updatedAt: Date;
   linkCategory: any;
 };
 
