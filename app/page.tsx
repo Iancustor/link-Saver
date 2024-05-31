@@ -1,5 +1,3 @@
-// "use client";
-import { fetchCategories } from "@/actions/categories";
 import { getLinks } from "@/actions/links";
 import { PopOver } from "@/components/PopOver";
 import { CirclePlus } from "lucide-react";
@@ -11,7 +9,7 @@ async function page() {
   const links = await getLinks();
   // console.log(links);
 
-  const categories = await fetchCategories();
+  // const categories = await fetchCategories();
 
   const linkCategories = Array.from(
     new Set(links?.map((link) => link.linkCategory))
