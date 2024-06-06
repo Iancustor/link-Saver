@@ -37,6 +37,10 @@ const ShareBtn: React.FC<ShareBtnProps> = ({ id, url }) => {
   }, [id]);
 
   const shareLink = () => {
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+
     if (navigator.share) {
       navigator
         .share({
@@ -52,10 +56,6 @@ const ShareBtn: React.FC<ShareBtnProps> = ({ id, url }) => {
       alert("Web Share API is not supported in your browser.");
     }
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>

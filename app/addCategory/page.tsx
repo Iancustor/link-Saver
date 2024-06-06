@@ -55,7 +55,7 @@ function CategoryForm() {
             id="name"
             type="name"
             placeholder=" Enter your category Name  "
-            className="py-2 px-2 rounded-sm bg-neutral-300 placeholder:text-black"
+            className="py-2 px-2 rounded-sm bg-neutral-300 dark:text-black placeholder:text-black"
           />
           {errors.name && (
             <p className="text-red-600 text-sm">
@@ -64,7 +64,7 @@ function CategoryForm() {
           )}
         </div>
         <div className="flex gap-12 items-center">
-          <button className="flex gap-3 items-center bg-amber-300 py-2 px-6 rounded-lg">
+          <button className="flex gap-3 items-center text-white dark:text-black font-semibold bg-amber-500 py-2 px-6 rounded-lg">
             ADD CATEGORY
             {loading ? (
               <Loader className="size-4 animate-spin" />
