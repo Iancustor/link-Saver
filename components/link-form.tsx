@@ -36,14 +36,14 @@ function LinkForm({ categoriesData, initialData }: LinkFormProps) {
   async function onSubmit(data: LinkValues) {
     setLoading(true);
     data.categoryId = categoryId;
-  
+
     if (!userId) {
       toast.error("User is not authenticated.");
       setLoading(false);
       return;
     }
-  
-    const userData = { ...data, userId };
+
+    const userData: any = { ...data, userId };
     try {
       if (initialData && initialData.id) {
         // Update the link
