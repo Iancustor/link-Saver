@@ -1,19 +1,20 @@
-import { getLinks } from "@/actions/links";
+// "use client";
+import { createManyLinks, getLinks } from "@/actions/links";
 import { PopOver } from "@/components/PopOver";
 import { CirclePlus } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { AddCategory } from "@/components/AddCategory";
+import { fetchCategories } from "@/actions/categories";
 
 async function page() {
   const links = await getLinks();
-  // console.log(links);
 
-  // const categories = await fetchCategories();
+  const categories = await fetchCategories();
 
-  const linkCategories = Array.from(
-    new Set(links?.map((link) => link.linkCategory))
-  );
+  // const linkCategories = Array.from(
+  //   new Set(links?.map((link) => link.linkCategory))
+  // );
 
   // console.log(linkCategories);
 
@@ -22,7 +23,7 @@ async function page() {
       <header>
         <nav className="flex flex-col gap-4 ">
           <div className="flex justify-between items-center">
-            {" "}
+            {/* <CreateButtton /> */}
             <div className="">
               <Link
                 href="/addLink"
@@ -35,7 +36,7 @@ async function page() {
             <AddCategory />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:grid-cols-5">
-            {linkCategories?.map((item, i) => (
+            {categories?.map((item, i) => (
               <Link
                 href={`category/${item.slug}`}
                 key={i}

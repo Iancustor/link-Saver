@@ -27,6 +27,6 @@ model link {
 model linkCategory {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
   name String
-  slug String?
+  slug String @unique
   link link[]
 }
