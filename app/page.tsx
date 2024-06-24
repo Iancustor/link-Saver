@@ -54,6 +54,7 @@ async function page() {
             <Link
               href={link.url}
               key={i}
+              target="blank"
               className=" w-full bg-dark-blue-gradient  bg-neutral-300 dark text-black py-4 px-8 rounded-lg"
             >
               <h2 className="font-semibold">{link.name}</h2>
